@@ -29,23 +29,25 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelHeader = new System.Windows.Forms.Label();
             this.playButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
+            this.buttonSpeakerOn = new System.Windows.Forms.Button();
+            this.buttonSpeakerOff = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // labelHeader
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Impact", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(116, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(213, 45);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Life In Ocean";
+            this.labelHeader.AutoSize = true;
+            this.labelHeader.BackColor = System.Drawing.Color.Transparent;
+            this.labelHeader.Font = new System.Drawing.Font("Impact", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelHeader.ForeColor = System.Drawing.Color.Navy;
+            this.labelHeader.Location = new System.Drawing.Point(112, 9);
+            this.labelHeader.Name = "labelHeader";
+            this.labelHeader.Size = new System.Drawing.Size(213, 45);
+            this.labelHeader.TabIndex = 0;
+            this.labelHeader.Text = "Life In Ocean";
             // 
             // playButton
             // 
@@ -92,6 +94,40 @@
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = false;
             // 
+            // buttonSpeakerOn
+            // 
+            this.buttonSpeakerOn.BackColor = System.Drawing.Color.Gold;
+            this.buttonSpeakerOn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSpeakerOn.BackgroundImage")));
+            this.buttonSpeakerOn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonSpeakerOn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonSpeakerOn.FlatAppearance.BorderSize = 2;
+            this.buttonSpeakerOn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.buttonSpeakerOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSpeakerOn.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonSpeakerOn.Location = new System.Drawing.Point(365, 232);
+            this.buttonSpeakerOn.Name = "buttonSpeakerOn";
+            this.buttonSpeakerOn.Size = new System.Drawing.Size(38, 37);
+            this.buttonSpeakerOn.TabIndex = 4;
+            this.buttonSpeakerOn.UseVisualStyleBackColor = false;
+            // 
+            // buttonSpeakerOff
+            // 
+            this.buttonSpeakerOff.BackColor = System.Drawing.Color.Gold;
+            this.buttonSpeakerOff.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonSpeakerOff.BackgroundImage")));
+            this.buttonSpeakerOff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonSpeakerOff.Enabled = false;
+            this.buttonSpeakerOff.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonSpeakerOff.FlatAppearance.BorderSize = 2;
+            this.buttonSpeakerOff.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.buttonSpeakerOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSpeakerOff.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonSpeakerOff.Location = new System.Drawing.Point(365, 232);
+            this.buttonSpeakerOff.Name = "buttonSpeakerOff";
+            this.buttonSpeakerOff.Size = new System.Drawing.Size(38, 37);
+            this.buttonSpeakerOff.TabIndex = 5;
+            this.buttonSpeakerOff.UseVisualStyleBackColor = false;
+            this.buttonSpeakerOff.Visible = false;
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -99,12 +135,16 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(415, 298);
+            this.Controls.Add(this.buttonSpeakerOff);
+            this.Controls.Add(this.buttonSpeakerOn);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.playButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelHeader);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuForm";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Life In Ocean";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,9 +152,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelHeader;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button buttonSpeakerOn;
+        private System.Windows.Forms.Button buttonSpeakerOff;
     }
 }

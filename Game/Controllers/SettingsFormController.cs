@@ -3,24 +3,23 @@ using OceanLogic.Controllers;
 using OceanLogic.Exceptions;
 using OceanLogic.Interfaces;
 using System;
-using System.Drawing;
 
 namespace Game.Controllers
 {
     internal class SettingsFormController
     {
         #region Fields     
-        private readonly IOceanViewer _ocean;
-        private readonly SettingsForm _settingsForm;
-        private readonly OceanController _oceanController;     
+        private readonly IOceanViewer _ocean; //Object for getting information from business logic
+        private readonly SettingsForm _settingsForm; //Object for manage settings form
+        private readonly OceanController _oceanController; //Object for manage business logic  
         #endregion
 
         #region Ctor       
         public SettingsFormController(SettingsForm settingsForm, OceanController oceanController, IOceanViewer ocean)
         {
             _settingsForm = settingsForm;
-            _settingsForm.ApplyButton.Click += ApplyButtonClick;
-            _settingsForm.CancelButton.Click += CancelButtonClick;
+            _settingsForm.ButtonApply_Click = ApplyButton_Click;
+            _settingsForm.ButtonCancel_Click = CancelButton_Click;
 
             _oceanController = oceanController;
 
@@ -32,57 +31,63 @@ namespace Game.Controllers
 
         private void ValidateData()
         {
-            int numPrey = 0, numPredators = 0, numObstacles = 0, numIterations = 0;
+            int numPrey = 0, numPredators = 0, numObstacles = 0, numKillerWhales = 0, numIterations = 0;
 
             if (!Int32.TryParse(_settingsForm.AmoutOfPrey, out numPrey))
             {
-                _settingsForm.WarningLabel.Show();
+                _settingsForm.LabelWarning.Show();
                 return;
             }
 
             if (!Int32.TryParse(_settingsForm.AmoutOfPredators, out numPredators))
             {
-                _settingsForm.WarningLabel.Show();
+                _settingsForm.LabelWarning.Show();
+                return;
+            }
+
+            if (!Int32.TryParse(_settingsForm.AmountOfKillerWhales, out numKillerWhales))
+            {
+                _settingsForm.LabelWarning.Show();
                 return;
             }
 
             if (!Int32.TryParse(_settingsForm.AmoutOfObstacles, out numObstacles))
             {
-                _settingsForm.WarningLabel.Show();
+                _settingsForm.LabelWarning.Show();
                 return;
             }
-
+          
             if (!Int32.TryParse(_settingsForm.AmoutOfIterations, out numIterations))
             {
-                _settingsForm.WarningLabel.Show();
+                _settingsForm.LabelWarning.Show();
                 return;
             }
 
-            if (numPrey + numPredators + numObstacles >= _ocean.NumRows * _ocean.NumColumns)
+            if (numPrey + numPredators + numObstacles + numKillerWhales >= _ocean.NumRows * _ocean.NumColumns)
             {
                 throw new GameFieldOverfillingException();
             }
 
-            _oceanController.SetSettings(numPrey, numPredators, numObstacles, numIterations);
+            _oceanController.SetSettings(numPrey, numPredators, numKillerWhales, numObstacles, numIterations);
         }
 
-        private void ApplyButtonClick(object? sender, EventArgs args) //Method when user press "Apply" button
+        private void ApplyButton_Click(object? sender, EventArgs args) 
         {
-            _settingsForm.WarningLabel.Hide();
+            _settingsForm.LabelWarning.Hide();
 
             try
             {
                 ValidateData();
-                _settingsForm.WarningLabel.Hide();
+                _settingsForm.LabelWarning.Hide();
             }
             catch (GameFieldOverfillingException e)
             {
-                _settingsForm.WarningLabel.Text = e.Message;
-                _settingsForm.WarningLabel.Show();
+                _settingsForm.LabelWarning.Text = e.Message;
+                _settingsForm.LabelWarning.Show();
             }
         }
 
-        private void CancelButtonClick(object? sender, EventArgs args) => _settingsForm.Hide(); //Method when user press "Cancel" button
+        private void CancelButton_Click(object? sender, EventArgs args) => _settingsForm.Hide();
         #endregion
     }
 }

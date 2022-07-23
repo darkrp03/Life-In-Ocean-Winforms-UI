@@ -1,6 +1,7 @@
 ﻿using OceanLogic;
 using OceanLogic.GameObjects;
 using OceanLogic.Interfaces;
+using System;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
@@ -10,16 +11,17 @@ namespace Game.Views
     public partial class GameForm : Form
     {
         #region Fields
-        private readonly IOceanViewer _ocean;
-        private readonly Bitmap _preyImage;
-        private readonly Bitmap _predatorImage;
-        private readonly Bitmap _obstacleImage;
+        private readonly IOceanViewer _ocean; //Objedct for getting information from business logic
+        private readonly Bitmap _preyImage; //Object with fish image 
+        private readonly Bitmap _predatorImage; //Object with shark image
+        private readonly Bitmap _killerWhaleImage;
+        private readonly Bitmap _obstacleImage; //Object with obstacle image
         #endregion
 
         #region Ctor       
         public GameForm(IOceanViewer ocean)
         {
-            InitializeComponent();           
+            InitializeComponent();
             DoubleBuffered(true);
 
             MaximizeBox = false;
@@ -28,15 +30,16 @@ namespace Game.Views
 
             navigationPanel.BackColor = Color.FromArgb(120, Color.Black);
 
-            _preyImage = new Bitmap(GameSettings.defaultPreyImagePath);
-            _predatorImage = new Bitmap(GameSettings.defaultPredatorImagePath);
-            _obstacleImage = new Bitmap(GameSettings.defaultObstaclerImagePath);
+            _preyImage = new Bitmap(GameSettings.PreyImagePath);
+            _predatorImage = new Bitmap(GameSettings.PredatorImagePath);
+            _killerWhaleImage = new Bitmap(GameSettings.KillerWhaleImagePath);
+            _obstacleImage = new Bitmap(GameSettings.ObstacleImagePath);
 
             _ocean = ocean;
         }
         #endregion
 
-        #region Properties       
+        #region Properties 
         public DataGridView GameField
         {
             get => gameField;
@@ -44,27 +47,37 @@ namespace Game.Views
 
         public Timer GameTimer
         {
-            get => timer1;
+            get => gameTimer;
         }
 
-        public Button ContinueButton
+        public EventHandler ButtonContinue_Click
         {
-            get => continueButton;
+            set => buttonContinue.Click += value;
         }
 
-        public Button StopButton
+        public EventHandler ButtonStop_Click
         {
-            get => stopButton;
+            set => buttonStop.Click += value;
         }
 
-        public Button BackButton
+        public EventHandler ButtonSpeakerOn_Click
         {
-            get => backButton;
+            set => buttonSpeakerOn.Click += value;
         }
 
-        public Button ResetGameButton
+        public EventHandler ButtonSpeakerOff_Click
         {
-            get => resetGameButton;
+            set => buttonSpeakerOff.Click += value;
+        }
+
+        public Button ButtonBack
+        {
+            get => buttonBack;
+        }
+
+        public Button ButtonResetGame
+        {
+            get => buttonResetGame;
         }
         #endregion
 
@@ -76,12 +89,66 @@ namespace Game.Views
             gameField, new object[] { enabled });
         }
 
-        public void DisplayInitialText() //Display initial text when form loaded
+        /// <summary>
+        /// Enables "buttonSpeakerOn".
+        /// </summary>
+        public void EnableButtonSpeaker()
         {
-            labelInfo.Text = $"Iterations: 0  Prey: {_ocean.NumPrey}  Predators: {_ocean.NumPredators}  Obstacles: {_ocean.NumObstacles}    ";
+            buttonSpeakerOn.Show();
+            buttonSpeakerOn.Enabled = true;
+
+            buttonSpeakerOff.Enabled = false;
+            buttonSpeakerOff.Hide();
         }
 
-        public void DisplayCells() //Displays cells in table
+        /// <summary>
+        /// Disables "buttonSpeakerOn".
+        /// </summary>
+        public void DisableButtonSpeaker()
+        {
+            buttonSpeakerOn.Enabled = false;
+            buttonSpeakerOn.Hide();
+
+            buttonSpeakerOff.Enabled = true;
+            buttonSpeakerOff.Show();
+        }
+
+        /// <summary>
+        /// Enables "Stop" button.
+        /// </summary>
+        public void EnableButtonStop()
+        {
+            buttonContinue.Enabled = false;
+            buttonContinue.Hide();
+
+            buttonStop.Enabled = true;
+            buttonStop.Show();
+        }
+
+        /// <summary>
+        /// Disables "Stop" button.
+        /// </summary>
+        public void DisableButtonStop()
+        {
+            buttonContinue.Show();
+            buttonContinue.Enabled = true;
+
+            buttonStop.Enabled = false;
+            buttonStop.Hide();
+        }
+
+        /// <summary>
+        /// Displays text when the form is loaded.
+        /// </summary>
+        public void DisplayInitialText()
+        {
+            labelInfo.Text = $"Iterations: 0  Prey: {_ocean.NumPrey}  Predators: {_ocean.NumPredators}  Killer Whales: {_ocean.NumKillerWhales}  Obstacles: {_ocean.NumObstacles}    ";
+        }
+
+        /// <summary>
+        /// Displays dataGridView table
+        /// </summary>
+        public void DisplayGameField() //Displays cells in table
         {
             for (int i = 0; i < _ocean.NumRows; i++)
             {
@@ -103,6 +170,10 @@ namespace Game.Views
                         {
                             gameField.Rows[i].Cells[j].Value = _obstacleImage;
                         }
+                        if (cell is KillerWhale)
+                        {
+                            gameField.Rows[i].Cells[j].Value = _killerWhaleImage;
+                        }
                     }
                     else
                     {
@@ -114,9 +185,14 @@ namespace Game.Views
             gameField.Refresh();
         }
 
-        public (int, int, int) DisplayAndGetStats(int iteration) //Displays and returns stats
+        /// <summary>
+        /// Displays and returns stats. 
+        /// </summary>
+        /// <param name="iteration">A numeric iteration</param>
+        /// <returns>Tuple with 3 elements: numbers of prey, predators and obstacles</returns>
+        public (int, int, int, int) DisplayAndGetStats(int iteration) //Displays and returns stats
         {
-            int numPrey = 0, numPredators = 0, numObstacle = 0;
+            int numPrey = 0, numPredators = 0, numKillerWhales = 0, numObstacles = 0;
 
             for (int i = 0; i < _ocean.NumRows; i++)
             {
@@ -132,14 +208,17 @@ namespace Game.Views
                     }
                     if (gameField.Rows[i].Cells[j].Value == _obstacleImage)
                     {
-                        numObstacle++;
+                        numObstacles++;
+                    }
+                    if (gameField.Rows[i].Cells[j].Value == _killerWhaleImage)
+                    {
+                        numKillerWhales++;
                     }
                 }
             }
+            labelInfo.Text = $"Iterations: {iteration}  Prey: {numPrey}  Predators: {numPredators}  Killer Whales: {numKillerWhales}  Obstacles: {numObstacles}     ";
 
-            labelInfo.Text = $"Iterations: {iteration}  Prey: {numPrey}  Predators: {numPredators}  Obstacles: {numObstacle}     ";         
-
-            return (numPrey, numPredators, numObstacle);
+            return (numPrey, numPredators, numKillerWhales, numObstacles);
         }
         #endregion
     }

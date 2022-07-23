@@ -1,4 +1,5 @@
 ﻿using OceanLogic.Interfaces;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,7 +8,7 @@ namespace Game.Views
     public partial class SettingsForm : Form
     {
         #region Fields      
-        private readonly IOceanViewer _ocean;
+        private readonly IOceanViewer _ocean; //Object for getting information from business logic
         #endregion
 
         #region Ctor       
@@ -22,44 +23,50 @@ namespace Game.Views
 
             _ocean = ocean;
 
-            preyTextBox.Text = _ocean.NumPrey.ToString();
-            obstaclesTextBox.Text = _ocean.NumObstacles.ToString();
-            predatorsTextBox.Text = _ocean.NumPredators.ToString();
+            textBoxPrey.Text = _ocean.NumPrey.ToString();
+            textBoxObstacles.Text = _ocean.NumObstacles.ToString();
+            textBoxPredators.Text = _ocean.NumPredators.ToString();
+            textBoxKillerWhales.Text = _ocean.NumKillerWhales.ToString();
             iterationsTextBox.Text = _ocean.NumIterations.ToString();
         }
         #endregion
 
         #region Properties      
-        public Label WarningLabel
+        public Label LabelWarning
         {
-            get => warningLabel;
+            get => labelWarning;
         }
         
-        public Button ApplyButton
+        public EventHandler ButtonApply_Click
         {
-            get => applyButton;
+            set => buttonApply.Click += value;
         }
 
-        public new Button CancelButton
+        public EventHandler ButtonCancel_Click
         {
-            get => cancelButton;
+            set => buttonCancel.Click += value;
         }
 
         public string AmoutOfPrey
         {
-            get => preyTextBox.Text;
+            get => textBoxPrey.Text;
         }
 
         public string AmoutOfPredators
         {
-            get => predatorsTextBox.Text;
+            get => textBoxPredators.Text;
+        }
+
+        public string AmountOfKillerWhales
+        {
+            get => textBoxKillerWhales.Text;
         }
 
         public string AmoutOfObstacles
         {
-            get => obstaclesTextBox.Text;
+            get => textBoxObstacles.Text;
         }
-
+        
         public string AmoutOfIterations
         {
             get => iterationsTextBox.Text;
