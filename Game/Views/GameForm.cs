@@ -166,9 +166,9 @@ namespace Game.Views
         /// </summary>
         /// <param name="iteration">A numeric iteration</param>
         /// <returns>Tuple with 3 elements: numbers of prey, predators and obstacles</returns>
-        public (int, int, int, int) DisplayAndGetStats(int iteration) //Displays and returns stats
+        public (int, int, int) DisplayAndGetStats(int iteration) //Displays and returns stats
         {
-            int numPrey = 0, numPredators = 0, numKillerWhales = 0, numObstacles = 0;
+            int numPrey = 0, numPredators = 0, numObstacles = 0;
 
             for (int i = 0; i < _ocean.NumRows; i++)
             {
@@ -186,15 +186,11 @@ namespace Game.Views
                     {
                         numObstacles++;
                     }
-                    if (gameField.Rows[i].Cells[j].Value == _killerWhaleImage)
-                    {
-                        numKillerWhales++;
-                    }
                 }
             }
-            labelInfo.Text = $"Iterations: {iteration}  Prey: {numPrey}  Predators: {numPredators}  Killer Whales: {numKillerWhales}  Obstacles: {numObstacles}     ";
+            labelInfo.Text = String.Format("Iterations: {0}  Prey: {1}  Predators: {2}  Killer Whales: {3}  Obstacles: {4}     ", iteration, numPrey, numPredators, _ocean.NumKillerWhales, numObstacles);
 
-            return (numPrey, numPredators, numKillerWhales, numObstacles);
+            return (numPrey, numPredators, numObstacles);
         }
         #endregion
     }

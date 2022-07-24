@@ -9,6 +9,7 @@ namespace OceanLogic.GameObjects
 
         public KillerWhale(Coordinate offset, IOcean ocean) : base(offset, ocean)
         {
+            image = GameSettings.defaultKillerWhaleImage;
         }
 
         private void Eat(Coordinate preyNeighbourPosition)

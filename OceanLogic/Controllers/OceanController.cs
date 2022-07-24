@@ -84,11 +84,10 @@ namespace OceanLogic.Controllers
             AddObstacle();
         }
 
-        public void SetSettings(int numPrey, int numPredators, int numKillerWhales, int numObstacles)
+        public void SetSettings(int numPrey, int numPredators, int numObstacles)
         {
             _ocean.NumPrey = numPrey;
             _ocean.NumPredators = numPredators;
-            _ocean.NumKillerWhales = numKillerWhales;
             _ocean.NumObstacles = numObstacles;        
         }
 
