@@ -25,9 +25,9 @@ namespace Game
             var gameForm = new GameForm(ocean);
             var menuForm = new MenuForm();
 
-            var oceanController = new OceanController(ocean);     
-            var settingFormController = new SettingsFormController(settingsForm, oceanController, ocean);        
-            var gameFormController = new GameFormController(gameForm, menuForm, ocean, oceanController);        
+            var oceanController = new OceanController(ocean);
+            var settingFormController = new SettingsFormController(settingsForm, oceanController, ocean);
+            var gameFormController = new GameFormController(gameForm, menuForm, ocean, oceanController);
             var menuFormController = new MenuFormController(menuForm, gameForm, settingsForm, helperForm);
 
             Application.Run(menuForm);

@@ -80,9 +80,9 @@ namespace Game.Controllers
             {
                 _gameForm.DisplayGameField();
                 
-                (int, int, int, int) settings = _gameForm.DisplayAndGetStats(_numIterations);
+                (int, int, int) settings = _gameForm.DisplayAndGetStats(_numIterations);
 
-                _oceanController.SetSettings(settings.Item1, settings.Item2, settings.Item3, settings.Item4);
+                _oceanController.SetSettings(settings.Item1, settings.Item2, settings.Item3);
                 _oceanController.Process();
             }
         }
