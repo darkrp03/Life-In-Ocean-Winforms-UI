@@ -50,14 +50,14 @@ namespace Game.Views
             get => gameTimer;
         }
 
-        public EventHandler ButtonContinue_Click
+        public Button ButtonContinue
         {
-            set => buttonContinue.Click += value;
+            get => buttonContinue;
         }
 
-        public EventHandler ButtonStop_Click
+        public Button ButtonStop
         {
-            set => buttonStop.Click += value;
+            get => buttonStop;
         }
 
         public EventHandler ButtonSpeakerOn_Click
@@ -87,7 +87,7 @@ namespace Game.Views
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
             | BindingFlags.Instance | BindingFlags.NonPublic, null,
             gameField, new object[] { enabled });
-        }
+        }        
 
         /// <summary>
         /// Enables "buttonSpeakerOn".
@@ -114,30 +114,6 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Enables "Stop" button.
-        /// </summary>
-        public void EnableButtonStop()
-        {
-            buttonContinue.Enabled = false;
-            buttonContinue.Hide();
-
-            buttonStop.Enabled = true;
-            buttonStop.Show();
-        }
-
-        /// <summary>
-        /// Disables "Stop" button.
-        /// </summary>
-        public void DisableButtonStop()
-        {
-            buttonContinue.Show();
-            buttonContinue.Enabled = true;
-
-            buttonStop.Enabled = false;
-            buttonStop.Hide();
-        }
-
-        /// <summary>
         /// Displays text when the form is loaded.
         /// </summary>
         public void DisplayInitialText()
@@ -158,11 +134,11 @@ namespace Game.Views
 
                     if (cell is not null)
                     {
-                        if (cell is Prey)
+                        if (cell is Fish)
                         {
                             gameField.Rows[i].Cells[j].Value = _preyImage;
                         }
-                        if (cell is Predator)
+                        if (cell is Shark)
                         {
                             gameField.Rows[i].Cells[j].Value = _predatorImage;
                         }

@@ -19,11 +19,16 @@ namespace Game.Views
         public EventHandler ButtonPlay_Click
         {
             set => playButton.Click += value;
-        }   
+        }
 
         public EventHandler ButtonSettings_Click
         {
             set => settingsButton.Click += value;
+        }
+
+        public EventHandler ButtonQuestion_Click
+        {
+            set => buttonQuestion.Click += value;
         }
 
         public EventHandler ButtonExit_Click

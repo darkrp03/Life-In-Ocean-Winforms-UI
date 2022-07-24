@@ -109,6 +109,7 @@ namespace OceanLogic
             _numObstacles = GameSettings.defaultNumObstacles;
             _numPrey = GameSettings.defaultNumPrey;
             _numPredators = GameSettings.defaultNumPredators;
+            _numKillerWhales = GameSettings.defaultNumKillerWhales;
         }
 
         public void Run()

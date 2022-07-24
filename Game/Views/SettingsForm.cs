@@ -23,11 +23,7 @@ namespace Game.Views
 
             _ocean = ocean;
 
-            textBoxPrey.Text = _ocean.NumPrey.ToString();
-            textBoxObstacles.Text = _ocean.NumObstacles.ToString();
-            textBoxPredators.Text = _ocean.NumPredators.ToString();
-            textBoxKillerWhales.Text = _ocean.NumKillerWhales.ToString();
-            iterationsTextBox.Text = _ocean.NumIterations.ToString();
+            SetDefaultTextBoxValue();
         }
         #endregion
 
@@ -70,6 +66,17 @@ namespace Game.Views
         public string AmoutOfIterations
         {
             get => iterationsTextBox.Text;
+        }
+        #endregion
+
+        #region Methods
+        public void SetDefaultTextBoxValue()
+        {
+            textBoxPrey.Text = _ocean.NumPrey.ToString();
+            textBoxObstacles.Text = _ocean.NumObstacles.ToString();
+            textBoxPredators.Text = _ocean.NumPredators.ToString();
+            textBoxKillerWhales.Text = _ocean.NumKillerWhales.ToString();
+            iterationsTextBox.Text = _ocean.NumIterations.ToString();
         }
         #endregion
     }

@@ -25,8 +25,8 @@ namespace Game.Controllers
             _gameForm.FormClosing += GameForm_FormClosing;
             _gameForm.GameTimer.Tick += Timer_Tick;
             _gameForm.KeyPress += KeyPressed;
-            _gameForm.ButtonStop_Click = StopButton_Click;
-            _gameForm.ButtonContinue_Click = ContinueButton_Click;
+            _gameForm.ButtonStop.Click += StopButton_Click;
+            _gameForm.ButtonContinue.Click += ContinueButton_Click;
             _gameForm.ButtonSpeakerOn_Click = ButtonSpeakerOn_Click;
             _gameForm.ButtonSpeakerOff_Click = ButtonSpeakerOff_Click;
             _gameForm.ButtonBack.Click += BackButton_Click;
@@ -91,7 +91,7 @@ namespace Game.Controllers
         {
             _gameForm.GameTimer.Enabled = false;
 
-            _gameForm.EnableButtonStop();
+            _gameForm.ButtonStop.Enabled = false;
             _gameForm.ButtonResetGame.Enabled = true;
             _gameForm.ButtonBack.Enabled = true;
 
@@ -100,8 +100,12 @@ namespace Game.Controllers
 
         private void ContinueButton_Click(object? sender, EventArgs e)
         {
-            _gameForm.EnableButtonStop();
-            
+            _gameForm.ButtonContinue.Enabled = false;
+            _gameForm.ButtonContinue.Hide();
+                        
+            _gameForm.ButtonStop.Show();
+            _gameForm.ButtonStop.Enabled = true;
+
             _gameForm.ButtonResetGame.Enabled = false;
             _gameForm.ButtonBack.Enabled = false;
 
@@ -110,7 +114,11 @@ namespace Game.Controllers
 
         private void StopButton_Click(object? sender, EventArgs e)
         {
-            _gameForm.DisableButtonStop();
+            _gameForm.ButtonStop.Enabled = false;
+            _gameForm.ButtonStop.Hide();
+
+            _gameForm.ButtonContinue.Show();
+            _gameForm.ButtonContinue.Enabled = true;
 
             _gameForm.ButtonResetGame.Enabled = true;
             _gameForm.ButtonBack.Enabled = true;
@@ -138,7 +146,11 @@ namespace Game.Controllers
 
         private void BackButton_Click(object? sender, EventArgs e)
         {
-            _gameForm.EnableButtonStop();
+            _gameForm.ButtonContinue.Enabled = false;
+            _gameForm.ButtonContinue.Hide();
+
+            _gameForm.ButtonStop.Show();
+            _gameForm.ButtonStop.Enabled = true;
 
             _gameForm.ButtonResetGame.Enabled = false;
             _gameForm.ButtonBack.Enabled = false;
@@ -169,7 +181,11 @@ namespace Game.Controllers
             _gameForm.GameField.Rows.Clear();
             _gameForm.GameField.Columns.Clear();
 
-            _gameForm.EnableButtonStop();
+            _gameForm.ButtonContinue.Enabled = false;
+            _gameForm.ButtonContinue.Hide();
+
+            _gameForm.ButtonStop.Show();
+            _gameForm.ButtonStop.Enabled = true;
 
             _gameForm.ButtonBack.Enabled = false;
             _gameForm.ButtonResetGame.Enabled = false;
@@ -196,7 +212,7 @@ namespace Game.Controllers
         {
             if (_gameForm.Visible)
             {
-                SoundService.SoundPlayer.SoundLocation = GameSettings.gameSongPath;
+                SoundService.SetMusic();
 
                 if (!SoundService.IsMuted)
                 {

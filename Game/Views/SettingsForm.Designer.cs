@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelPause = new System.Windows.Forms.Label();
+            this.labelKillerWhales = new System.Windows.Forms.Label();
+            this.textBoxKillerWhales = new System.Windows.Forms.TextBox();
             this.labelInfo = new System.Windows.Forms.Label();
             this.labelWarning = new System.Windows.Forms.Label();
             this.iterationsLabel = new System.Windows.Forms.Label();
@@ -43,14 +46,13 @@
             this.textBoxPredators = new System.Windows.Forms.TextBox();
             this.textBoxObstacles = new System.Windows.Forms.TextBox();
             this.textBoxPrey = new System.Windows.Forms.TextBox();
-            this.labelKillerWhales = new System.Windows.Forms.Label();
-            this.textBoxKillerWhales = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.labelPause);
             this.panel1.Controls.Add(this.labelKillerWhales);
             this.panel1.Controls.Add(this.textBoxKillerWhales);
             this.panel1.Controls.Add(this.labelInfo);
@@ -70,6 +72,37 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(417, 397);
             this.panel1.TabIndex = 0;
+            // 
+            // labelPause
+            // 
+            this.labelPause.AutoSize = true;
+            this.labelPause.BackColor = System.Drawing.Color.Transparent;
+            this.labelPause.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPause.ForeColor = System.Drawing.Color.White;
+            this.labelPause.Location = new System.Drawing.Point(132, 352);
+            this.labelPause.Name = "labelPause";
+            this.labelPause.Size = new System.Drawing.Size(143, 25);
+            this.labelPause.TabIndex = 15;
+            this.labelPause.Text = "P - pause game";
+            // 
+            // labelKillerWhales
+            // 
+            this.labelKillerWhales.AutoSize = true;
+            this.labelKillerWhales.BackColor = System.Drawing.Color.Transparent;
+            this.labelKillerWhales.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelKillerWhales.ForeColor = System.Drawing.Color.White;
+            this.labelKillerWhales.Location = new System.Drawing.Point(3, 123);
+            this.labelKillerWhales.Name = "labelKillerWhales";
+            this.labelKillerWhales.Size = new System.Drawing.Size(210, 25);
+            this.labelKillerWhales.TabIndex = 14;
+            this.labelKillerWhales.Text = "Amount of killer whales";
+            // 
+            // textBoxKillerWhales
+            // 
+            this.textBoxKillerWhales.Location = new System.Drawing.Point(18, 162);
+            this.textBoxKillerWhales.Name = "textBoxKillerWhales";
+            this.textBoxKillerWhales.Size = new System.Drawing.Size(131, 23);
+            this.textBoxKillerWhales.TabIndex = 13;
             // 
             // labelInfo
             // 
@@ -202,25 +235,6 @@
             this.textBoxPrey.Size = new System.Drawing.Size(131, 23);
             this.textBoxPrey.TabIndex = 0;
             // 
-            // labelKillerWhales
-            // 
-            this.labelKillerWhales.AutoSize = true;
-            this.labelKillerWhales.BackColor = System.Drawing.Color.Transparent;
-            this.labelKillerWhales.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelKillerWhales.ForeColor = System.Drawing.Color.White;
-            this.labelKillerWhales.Location = new System.Drawing.Point(3, 123);
-            this.labelKillerWhales.Name = "labelKillerWhales";
-            this.labelKillerWhales.Size = new System.Drawing.Size(210, 25);
-            this.labelKillerWhales.TabIndex = 14;
-            this.labelKillerWhales.Text = "Amount of killer whales";
-            // 
-            // textBoxKillerWhales
-            // 
-            this.textBoxKillerWhales.Location = new System.Drawing.Point(18, 162);
-            this.textBoxKillerWhales.Name = "textBoxKillerWhales";
-            this.textBoxKillerWhales.Size = new System.Drawing.Size(131, 23);
-            this.textBoxKillerWhales.TabIndex = 13;
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -256,5 +270,6 @@
         private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.Label labelKillerWhales;
         private System.Windows.Forms.TextBox textBoxKillerWhales;
+        private System.Windows.Forms.Label labelPause;
     }
 }

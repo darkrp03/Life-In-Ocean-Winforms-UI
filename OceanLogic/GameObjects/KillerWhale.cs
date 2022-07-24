@@ -1,9 +1,10 @@
-﻿using OceanLogic.Interfaces;
+﻿using OceanLogic.GameObjects.AbstractObjects;
+using OceanLogic.Interfaces;
 using System;
 
 namespace OceanLogic.GameObjects
 {
-    public class KillerWhale : Predator
+    public class KillerWhale : Cell
     {
 
         public KillerWhale(Coordinate offset, IOcean ocean) : base(offset, ocean)
@@ -15,7 +16,7 @@ namespace OceanLogic.GameObjects
             Move(Offset, preyNeighbourPosition);
         }
 
-        public override void Move(Coordinate oldPosition, Coordinate newPosition) //Creates new Cell in the old coordinate and creates new Prey in the new coordinate
+        private void Move(Coordinate oldPosition, Coordinate newPosition) //Creates new Cell in the old coordinate and creates new Prey in the new coordinate
         {
             Offset = newPosition;
 

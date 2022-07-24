@@ -50,8 +50,8 @@
     <Compile Include="GameObjects\AbstractObjects\Cell.cs" />
     <Compile Include="GameObjects\KillerWhale.cs" />
     <Compile Include="GameObjects\Obstacle.cs" />
-    <Compile Include="GameObjects\Predator.cs" />
-    <Compile Include="GameObjects\Prey.cs" />
+    <Compile Include="GameObjects\Shark.cs" />
+    <Compile Include="GameObjects\Fish.cs" />
     <Compile Include="GameSettings.cs" />
     <Compile Include="Interfaces\IOcean.cs" />
     <Compile Include="Interfaces\IOceanViewer.cs" />

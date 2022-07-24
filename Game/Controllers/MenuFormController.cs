@@ -10,35 +10,42 @@ namespace Game.Controllers
         private readonly MenuForm _menuForm; //Object for manage menu form    
         private readonly GameForm _gameForm; //Object for manage game form
         private readonly SettingsForm _settingsForm; //Object for manage settings form
+        private HelperForm _helperForm; //Object for manage helper form
         #endregion
 
         #region Ctor        
-        public MenuFormController(MenuForm menuForm, GameForm gameForm, SettingsForm settingsForm)
+        public MenuFormController(MenuForm menuForm, GameForm gameForm, SettingsForm settingsForm, HelperForm helperForm)
         {
             _menuForm = menuForm;
-            _menuForm.ButtonPlay_Click = PlayButton_Click;
-            _menuForm.ButtonSettings_Click = SettingsButton_Click;
+            _menuForm.ButtonPlay_Click = ButtonPlay_Click;
+            _menuForm.ButtonSettings_Click = ButtonSettings_Click;
             _menuForm.ButtonSpeakerOn_Click = ButtonSpeakerOn_Click;
             _menuForm.ButtonSpeakerOff_Click = ButtonSpeakerOff_Click;
+            _menuForm.ButtonQuestion_Click = ButtonQuestion_Click;
             _menuForm.ButtonExit_Click = ExitButtonClick;
 
             _gameForm = gameForm;
 
             _settingsForm = settingsForm;
 
+            _helperForm = helperForm;
+
             SoundService.SoundPlayer.SoundLocation = GameSettings.menuSongPath;
             SoundService.SoundPlayer.PlayLooping();
+           
         }
         #endregion
 
         #region Methods  
-        private void PlayButton_Click(object? sender, EventArgs args)
+        private void ButtonPlay_Click(object? sender, EventArgs args)
         {
             _gameForm.Show();
             _menuForm.Hide();
         }
 
-        private void SettingsButton_Click(object? sender, EventArgs args) => _settingsForm.ShowDialog();    
+        private void ButtonSettings_Click(object? sender, EventArgs args) => _settingsForm.ShowDialog();
+
+        private void ButtonQuestion_Click(object? sender, EventArgs args) => _helperForm.ShowDialog();
 
         private void ButtonSpeakerOn_Click(object? sender, EventArgs args)
         {

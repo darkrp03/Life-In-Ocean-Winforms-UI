@@ -18,8 +18,8 @@ namespace Game.Controllers
         public SettingsFormController(SettingsForm settingsForm, OceanController oceanController, IOceanViewer ocean)
         {
             _settingsForm = settingsForm;
-            _settingsForm.ButtonApply_Click = ApplyButton_Click;
-            _settingsForm.ButtonCancel_Click = CancelButton_Click;
+            _settingsForm.ButtonApply_Click = ButtonApply_Click;
+            _settingsForm.ButtonCancel_Click = ButtonCancel_Click;
 
             _oceanController = oceanController;
 
@@ -28,7 +28,6 @@ namespace Game.Controllers
         #endregion
 
         #region Methods  
-
         private void ValidateData()
         {
             int numPrey = 0, numPredators = 0, numObstacles = 0, numKillerWhales = 0, numIterations = 0;
@@ -71,14 +70,13 @@ namespace Game.Controllers
             _oceanController.SetSettings(numPrey, numPredators, numKillerWhales, numObstacles, numIterations);
         }
 
-        private void ApplyButton_Click(object? sender, EventArgs args) 
+        private void ButtonApply_Click(object? sender, EventArgs args) 
         {
             _settingsForm.LabelWarning.Hide();
 
             try
             {
                 ValidateData();
-                _settingsForm.LabelWarning.Hide();
             }
             catch (GameFieldOverfillingException e)
             {
@@ -87,7 +85,11 @@ namespace Game.Controllers
             }
         }
 
-        private void CancelButton_Click(object? sender, EventArgs args) => _settingsForm.Hide();
+        private void ButtonCancel_Click(object? sender, EventArgs args)
+        {
+            _settingsForm.SetDefaultTextBoxValue();
+            _settingsForm.Hide();
+        }
         #endregion
     }
 }

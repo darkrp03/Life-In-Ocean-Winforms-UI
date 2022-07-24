@@ -35,6 +35,7 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.buttonSpeakerOn = new System.Windows.Forms.Button();
             this.buttonSpeakerOff = new System.Windows.Forms.Button();
+            this.buttonQuestion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelHeader
@@ -128,6 +129,22 @@
             this.buttonSpeakerOff.UseVisualStyleBackColor = false;
             this.buttonSpeakerOff.Visible = false;
             // 
+            // buttonQuestion
+            // 
+            this.buttonQuestion.BackColor = System.Drawing.Color.Gold;
+            this.buttonQuestion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonQuestion.BackgroundImage")));
+            this.buttonQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonQuestion.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonQuestion.FlatAppearance.BorderSize = 2;
+            this.buttonQuestion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.buttonQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonQuestion.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonQuestion.Location = new System.Drawing.Point(12, 232);
+            this.buttonQuestion.Name = "buttonQuestion";
+            this.buttonQuestion.Size = new System.Drawing.Size(38, 37);
+            this.buttonQuestion.TabIndex = 6;
+            this.buttonQuestion.UseVisualStyleBackColor = false;
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -135,6 +152,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(415, 298);
+            this.Controls.Add(this.buttonQuestion);
             this.Controls.Add(this.buttonSpeakerOff);
             this.Controls.Add(this.buttonSpeakerOn);
             this.Controls.Add(this.exitButton);
@@ -158,5 +176,6 @@
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button buttonSpeakerOn;
         private System.Windows.Forms.Button buttonSpeakerOff;
+        private System.Windows.Forms.Button buttonQuestion;
     }
 }

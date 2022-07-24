@@ -40,7 +40,7 @@ namespace OceanLogic.Controllers
             {
                 var coordinate = _ocean.Direction.GetNullPosition();
 
-                _ocean[coordinate.X, coordinate.Y] = new Predator(new Coordinate
+                _ocean[coordinate.X, coordinate.Y] = new Shark(new Coordinate
                 {
                     X = coordinate.X,
                     Y = coordinate.Y
@@ -54,7 +54,7 @@ namespace OceanLogic.Controllers
             {
                 var coordinate = _ocean.Direction.GetNullPosition();
 
-                _ocean[coordinate.X, coordinate.Y] = new Prey(new Coordinate
+                _ocean[coordinate.X, coordinate.Y] = new Fish(new Coordinate
                 {
                     X = coordinate.X,
                     Y = coordinate.Y
