@@ -1,9 +1,11 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Game.Views
 {
     public partial class MenuForm : Form
     {
+        #region Ctor      
         public MenuForm()
         {
             InitializeComponent();
@@ -11,20 +13,64 @@ namespace Game.Views
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
         }
+        #endregion
 
-        public Button PlayButton
+        #region Properties
+        public EventHandler ButtonPlay_Click
         {
-            get => playButton;
+            set => playButton.Click += value;
         }
 
-        public Button SettingsButton
+        public EventHandler ButtonSettings_Click
         {
-            get => settingsButton;
+            set => settingsButton.Click += value;
         }
 
-        public Button ExitButton
+        public EventHandler ButtonQuestion_Click
         {
-            get => exitButton;
+            set => buttonQuestion.Click += value;
         }
+
+        public EventHandler ButtonExit_Click
+        {
+            set => exitButton.Click += value;
+        }
+
+        public EventHandler ButtonSpeakerOn_Click
+        {
+            set => buttonSpeakerOn.Click += value;
+        }
+
+        public EventHandler ButtonSpeakerOff_Click
+        {
+            set => buttonSpeakerOff.Click += value;
+        }
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Enables "buttonSpeakerOn".
+        /// </summary>
+        public void EnableButtonSpeaker()
+        {
+            buttonSpeakerOn.Show();
+            buttonSpeakerOn.Enabled = true;
+
+            buttonSpeakerOff.Enabled = false;
+            buttonSpeakerOff.Hide();
+        }
+
+        /// <summary>
+        /// Disables "buttonSpeakerOn".
+        /// </summary>
+        public void DisableButtonSpeaker()
+        {
+            buttonSpeakerOn.Enabled = false;
+            buttonSpeakerOn.Hide();
+
+            buttonSpeakerOff.Enabled = true;
+            buttonSpeakerOff.Show();
+        }
+        #endregion
     }
 }

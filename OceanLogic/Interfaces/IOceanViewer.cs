@@ -8,6 +8,8 @@ namespace OceanLogic.Interfaces
 
         int NumPredators { get; set; }
 
+        int NumKillerWhales { get; set; }
+
         int NumObstacles { get; set; }
 
         int NumRows { get; }

@@ -2,7 +2,7 @@
 
 namespace OceanLogic
 {
-    static class Randomizer
+    public static class Randomizer
     {
         #region Fields
         private static Random random = new Random();

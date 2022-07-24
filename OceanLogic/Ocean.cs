@@ -1,7 +1,6 @@
 ﻿using OceanLogic.GameObjects.AbstractObjects;
 using OceanLogic.Interfaces;
 using System;
-using System.Threading;
 
 namespace OceanLogic
 {
@@ -15,6 +14,7 @@ namespace OceanLogic
         private int _numColumns = GameSettings.defaultNumCols; //Number of columns on he playing field
         private int _numPrey = GameSettings.defaultNumPrey; //Number of prey in the ocean
         private int _numPredators = GameSettings.defaultNumPredators; //Number of predators in the ocean
+        private int _numKillerWhales = GameSettings.defaultNumKillerWhales; //Number of killer whales in the ocean
         private int _numObstacles = GameSettings.defaultNumObstacles; //Number of obstacles in the ocean
         private int _numIterations = GameSettings.defaultNumIterations; //Number of iterations
         #endregion
@@ -40,6 +40,12 @@ namespace OceanLogic
         {
             get => _numPredators;
             set => _numPredators = value;
+        }
+
+        public int NumKillerWhales
+        {
+            get => _numKillerWhales;
+            set => _numKillerWhales = value;
         }
 
         public int NumObstacles
@@ -103,6 +109,7 @@ namespace OceanLogic
             _numObstacles = GameSettings.defaultNumObstacles;
             _numPrey = GameSettings.defaultNumPrey;
             _numPredators = GameSettings.defaultNumPredators;
+            _numKillerWhales = GameSettings.defaultNumKillerWhales;
         }
 
         public void Run()
@@ -128,7 +135,6 @@ namespace OceanLogic
             }
 
             GC.Collect();
-            Thread.Sleep(500);
         }
         #endregion
     }

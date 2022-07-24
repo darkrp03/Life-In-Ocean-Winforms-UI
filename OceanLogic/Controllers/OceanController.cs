@@ -6,13 +6,13 @@ namespace OceanLogic.Controllers
     public class OceanController
     {
         #region Fields
-        private readonly Ocean _ocean;
-        private PreyOrPredatorsDiedDelegate preyOrPredadorsDied;
+        private readonly Ocean _ocean; //Object for manage business logic
+        private PreyOrPredatorsDiedDelegate _preyOrPredadorsDied; //Delegate for event when prey or predators have died
 
-        public event PreyOrPredatorsDiedDelegate OnPreyOrPredatorsDied
+        public event PreyOrPredatorsDiedDelegate OnPreyOrPredatorsDied //Event
         {
-            add => preyOrPredadorsDied += value;
-            remove => preyOrPredadorsDied -= value;
+            add => _preyOrPredadorsDied += value;
+            remove => _preyOrPredadorsDied -= value;
         }
         #endregion
 
@@ -40,7 +40,7 @@ namespace OceanLogic.Controllers
             {
                 var coordinate = _ocean.Direction.GetNullPosition();
 
-                _ocean[coordinate.X, coordinate.Y] = new Predator(new Coordinate
+                _ocean[coordinate.X, coordinate.Y] = new Shark(new Coordinate
                 {
                     X = coordinate.X,
                     Y = coordinate.Y
@@ -54,7 +54,21 @@ namespace OceanLogic.Controllers
             {
                 var coordinate = _ocean.Direction.GetNullPosition();
 
-                _ocean[coordinate.X, coordinate.Y] = new Prey(new Coordinate
+                _ocean[coordinate.X, coordinate.Y] = new Fish(new Coordinate
+                {
+                    X = coordinate.X,
+                    Y = coordinate.Y
+                }, _ocean);
+            }
+        }
+
+        public void AddKillerWhale() //Add killer whales in ocean
+        {
+            for (int i = 0; i < _ocean.NumKillerWhales; i++)
+            {
+                var coordinate = _ocean.Direction.GetNullPosition();
+
+                _ocean[coordinate.X, coordinate.Y] = new KillerWhale(new Coordinate
                 {
                     X = coordinate.X,
                     Y = coordinate.Y
@@ -66,20 +80,23 @@ namespace OceanLogic.Controllers
         {
             AddPrey();
             AddPredator();
+            AddKillerWhale();
             AddObstacle();
         }
 
-        public void SetSettings(int numPrey, int numPredators, int numObstacles)
+        public void SetSettings(int numPrey, int numPredators, int numKillerWhales, int numObstacles)
         {
             _ocean.NumPrey = numPrey;
             _ocean.NumPredators = numPredators;
+            _ocean.NumKillerWhales = numKillerWhales;
             _ocean.NumObstacles = numObstacles;        
         }
 
-        public void SetSettings(int numPrey, int numPredators, int numObstacles, int numIterations)
+        public void SetSettings(int numPrey, int numPredators, int numKillerWhales, int numObstacles, int numIterations)
         {
             _ocean.NumPrey = numPrey;
             _ocean.NumPredators = numPredators;
+            _ocean.NumKillerWhales = numKillerWhales;
             _ocean.NumObstacles = numObstacles;
             _ocean.NumIterations = numIterations;
         }
@@ -90,7 +107,7 @@ namespace OceanLogic.Controllers
         {
             if (_ocean.NumPrey <= 0 || _ocean.NumPredators <= 0)
             {
-                preyOrPredadorsDied?.Invoke();
+                _preyOrPredadorsDied?.Invoke();
                 return;
             }
 
