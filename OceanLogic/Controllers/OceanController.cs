@@ -62,7 +62,7 @@ namespace OceanLogic.Controllers
             }
         }
 
-        public void AddKillerWhale() //Add killer whales in ocean
+        private void AddKillerWhale() //Add killer whales in ocean
         {
             for (int i = 0; i < _ocean.NumKillerWhales; i++)
             {

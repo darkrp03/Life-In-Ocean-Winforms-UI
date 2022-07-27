@@ -190,6 +190,10 @@ namespace Game.Controllers
             _gameForm.ButtonBack.Enabled = false;
             _gameForm.ButtonResetGame.Enabled = false;
 
+            SoundService.SoundPlayer.Stop();
+            SoundService.ChangeMusic();
+            SoundService.SoundPlayer.Play();
+
             StartGame();
         }
 
@@ -212,7 +216,7 @@ namespace Game.Controllers
         {
             if (_gameForm.Visible)
             {
-                SoundService.SetMusic();
+                SoundService.ChangeMusic();
 
                 if (!SoundService.IsMuted)
                 {

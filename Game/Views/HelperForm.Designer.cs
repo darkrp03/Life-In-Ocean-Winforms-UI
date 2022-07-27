@@ -111,7 +111,7 @@
             this.labelPredatorInfo.BackColor = System.Drawing.Color.Transparent;
             this.labelPredatorInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelPredatorInfo.ForeColor = System.Drawing.Color.White;
-            this.labelPredatorInfo.Location = new System.Drawing.Point(46, 134);
+            this.labelPredatorInfo.Location = new System.Drawing.Point(46, 127);
             this.labelPredatorInfo.Name = "labelPredatorInfo";
             this.labelPredatorInfo.Size = new System.Drawing.Size(366, 100);
             this.labelPredatorInfo.TabIndex = 4;
@@ -122,7 +122,7 @@
             // 
             this.pictureBoxPredator.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxPredator.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPredator.Image")));
-            this.pictureBoxPredator.Location = new System.Drawing.Point(3, 163);
+            this.pictureBoxPredator.Location = new System.Drawing.Point(3, 156);
             this.pictureBoxPredator.Name = "pictureBoxPredator";
             this.pictureBoxPredator.Size = new System.Drawing.Size(45, 45);
             this.pictureBoxPredator.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

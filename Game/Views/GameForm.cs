@@ -14,7 +14,7 @@ namespace Game.Views
         private readonly IOceanViewer _ocean; //Objedct for getting information from business logic
         private readonly Bitmap _preyImage; //Object with fish image 
         private readonly Bitmap _predatorImage; //Object with shark image
-        private readonly Bitmap _killerWhaleImage;
+        private readonly Bitmap _killerWhaleImage; //Object with killer whale image
         private readonly Bitmap _obstacleImage; //Object with obstacle image
         #endregion
 
@@ -30,10 +30,10 @@ namespace Game.Views
 
             navigationPanel.BackColor = Color.FromArgb(120, Color.Black);
 
-            _preyImage = new Bitmap(GameSettings.PreyImagePath);
-            _predatorImage = new Bitmap(GameSettings.PredatorImagePath);
-            _killerWhaleImage = new Bitmap(GameSettings.KillerWhaleImagePath);
-            _obstacleImage = new Bitmap(GameSettings.ObstacleImagePath);
+            _preyImage = new Bitmap(GameSettings.preyImagePath);
+            _predatorImage = new Bitmap(GameSettings.predatorImagePath);
+            _killerWhaleImage = new Bitmap(GameSettings.killerWhaleImagePath);
+            _obstacleImage = new Bitmap(GameSettings.obstacleImagePath);
 
             _ocean = ocean;
         }
@@ -188,7 +188,7 @@ namespace Game.Views
                     }
                 }
             }
-            labelInfo.Text = String.Format("Iterations: {0}  Prey: {1}  Predators: {2}  Killer Whales: {3}  Obstacles: {4}     ", iteration, numPrey, numPredators, _ocean.NumKillerWhales, numObstacles);
+            labelInfo.Text = String.Format("Iterations: {0}  Fishes: {1}  Sharks: {2}  Killer Whales: {3}  Obstacles: {4}     ", iteration, numPrey, numPredators, _ocean.NumKillerWhales, numObstacles);
 
             return (numPrey, numPredators, numObstacles);
         }
