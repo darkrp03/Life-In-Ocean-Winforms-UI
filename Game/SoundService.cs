@@ -20,7 +20,7 @@ namespace Game
             get => _soundPlayer;
         }
 
-        public static void SetMusic()
+        public static void ChangeMusic()
         {
             if (currentMusicIndex == GameSettings.gameSounds.Length)
             {

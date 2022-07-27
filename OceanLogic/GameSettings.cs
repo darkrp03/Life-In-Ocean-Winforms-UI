@@ -22,16 +22,17 @@ namespace OceanLogic
         public const char defaultEmptyImage = '-';
         public const int defaultNumIterations = 1000;
 
-        public static string PreyImagePath = projectPath + @"\Static files\Images\Fish.png";
-        public static string PredatorImagePath = projectPath + @"\Static files\Images\Shark.png";
-        public static string KillerWhaleImagePath = projectPath + @"\Static files\Images\Killer whale.png";
-        public static string ObstacleImagePath = projectPath + @"\Static files\Images\Obstacle.png";
-        public static string menuSongPath = projectPath + @"\Static files\Sounds\Metal Gear Rising Revengeance Vocal Tracks - The Only Thing I Know For Real.wav";
+        public static string preyImagePath = projectPath + @"\Static files\Images\Fish.png";
+        public static string predatorImagePath = projectPath + @"\Static files\Images\Shark.png";
+        public static string killerWhaleImagePath = projectPath + @"\Static files\Images\Killer whale.png";
+        public static string obstacleImagePath = projectPath + @"\Static files\Images\Obstacle.png";
+        public static string menuSongPath = projectPath + @"\Static files\Sounds\Bon Jovi - Its my life.wav";
 
         public static string[] gameSounds = new string[] 
         { 
           projectPath + @"\Static files\Sounds\Undertale Megalovania Song Sound Effect.wav",
-          projectPath + @"\Static files\Sounds\Crush 40 - Open Your Heart.wav"
+          projectPath + @"\Static files\Sounds\Crush 40 - Open Your Heart.wav",
+          projectPath + @"\Static files\Sounds\Rollin-Limp Bizkit- Instrumental.wav"
         };
     }
 }
