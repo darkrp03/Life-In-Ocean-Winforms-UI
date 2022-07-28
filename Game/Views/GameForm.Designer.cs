@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.gameField = new System.Windows.Forms.DataGridView();
@@ -42,6 +42,8 @@
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonResetGame = new System.Windows.Forms.Button();
             this.navigationPanel = new System.Windows.Forms.Panel();
+            this.buttonNextMusic = new System.Windows.Forms.Button();
+            this.buttonPreviousMusic = new System.Windows.Forms.Button();
             this.buttonSpeakerOff = new System.Windows.Forms.Button();
             this.buttonSpeakerOn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gameField)).BeginInit();
@@ -64,24 +66,24 @@
             this.gameField.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gameField.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.gameField.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gameField.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gameField.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gameField.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gameField.ColumnHeadersVisible = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gameField.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gameField.DefaultCellStyle = dataGridViewCellStyle2;
             this.gameField.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gameField.Enabled = false;
             this.gameField.EnableHeadersVisualStyles = false;
@@ -90,17 +92,17 @@
             this.gameField.MultiSelect = false;
             this.gameField.Name = "gameField";
             this.gameField.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gameField.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gameField.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gameField.RowHeadersVisible = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Black;
-            this.gameField.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
+            this.gameField.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.gameField.RowTemplate.Height = 25;
             this.gameField.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.gameField.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -187,6 +189,8 @@
             // 
             this.navigationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.navigationPanel.Controls.Add(this.buttonNextMusic);
+            this.navigationPanel.Controls.Add(this.buttonPreviousMusic);
             this.navigationPanel.Controls.Add(this.buttonSpeakerOff);
             this.navigationPanel.Controls.Add(this.buttonSpeakerOn);
             this.navigationPanel.Controls.Add(this.labelInfo);
@@ -198,6 +202,40 @@
             this.navigationPanel.Name = "navigationPanel";
             this.navigationPanel.Size = new System.Drawing.Size(1318, 95);
             this.navigationPanel.TabIndex = 6;
+            // 
+            // buttonNextMusic
+            // 
+            this.buttonNextMusic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonNextMusic.BackColor = System.Drawing.Color.Gold;
+            this.buttonNextMusic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonNextMusic.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonNextMusic.FlatAppearance.BorderSize = 2;
+            this.buttonNextMusic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.buttonNextMusic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNextMusic.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonNextMusic.Location = new System.Drawing.Point(677, 26);
+            this.buttonNextMusic.Name = "buttonNextMusic";
+            this.buttonNextMusic.Size = new System.Drawing.Size(38, 36);
+            this.buttonNextMusic.TabIndex = 9;
+            this.buttonNextMusic.Text = "▶";
+            this.buttonNextMusic.UseVisualStyleBackColor = false;
+            // 
+            // buttonPreviousMusic
+            // 
+            this.buttonPreviousMusic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPreviousMusic.BackColor = System.Drawing.Color.Gold;
+            this.buttonPreviousMusic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonPreviousMusic.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonPreviousMusic.FlatAppearance.BorderSize = 2;
+            this.buttonPreviousMusic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.buttonPreviousMusic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPreviousMusic.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonPreviousMusic.Location = new System.Drawing.Point(589, 26);
+            this.buttonPreviousMusic.Name = "buttonPreviousMusic";
+            this.buttonPreviousMusic.Size = new System.Drawing.Size(38, 36);
+            this.buttonPreviousMusic.TabIndex = 8;
+            this.buttonPreviousMusic.Text = "◀";
+            this.buttonPreviousMusic.UseVisualStyleBackColor = false;
             // 
             // buttonSpeakerOff
             // 
@@ -211,7 +249,7 @@
             this.buttonSpeakerOff.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonSpeakerOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSpeakerOff.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSpeakerOff.Location = new System.Drawing.Point(664, 26);
+            this.buttonSpeakerOff.Location = new System.Drawing.Point(633, 26);
             this.buttonSpeakerOff.Name = "buttonSpeakerOff";
             this.buttonSpeakerOff.Size = new System.Drawing.Size(38, 36);
             this.buttonSpeakerOff.TabIndex = 7;
@@ -229,7 +267,7 @@
             this.buttonSpeakerOn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonSpeakerOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSpeakerOn.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSpeakerOn.Location = new System.Drawing.Point(664, 26);
+            this.buttonSpeakerOn.Location = new System.Drawing.Point(633, 26);
             this.buttonSpeakerOn.Name = "buttonSpeakerOn";
             this.buttonSpeakerOn.Size = new System.Drawing.Size(38, 36);
             this.buttonSpeakerOn.TabIndex = 6;
@@ -265,5 +303,7 @@
         private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.Button buttonSpeakerOn;
         private System.Windows.Forms.Button buttonSpeakerOff;
+        private System.Windows.Forms.Button buttonNextMusic;
+        private System.Windows.Forms.Button buttonPreviousMusic;
     }
 }

@@ -29,6 +29,8 @@ namespace Game.Controllers
             _gameForm.ButtonContinue.Click += ContinueButton_Click;
             _gameForm.ButtonSpeakerOn_Click = ButtonSpeakerOn_Click;
             _gameForm.ButtonSpeakerOff_Click = ButtonSpeakerOff_Click;
+            _gameForm.ButtonNextMusic.Click += ButtonNextMusic_Click;
+            _gameForm.ButtonPreviousMusic.Click += ButtonPreviousMusic_Click;
             _gameForm.ButtonBack.Click += BackButton_Click;
             _gameForm.ButtonResetGame.Click += ResetGameButton_Click;
 
@@ -131,6 +133,9 @@ namespace Game.Controllers
             SoundService.SoundPlayer.Stop();
             SoundService.IsMuted = true;
 
+            _gameForm.ButtonNextMusic.Enabled = false;
+            _gameForm.ButtonPreviousMusic.Enabled = false;
+
             _gameForm.DisableButtonSpeaker();
             _menuForm.DisableButtonSpeaker();
         }
@@ -140,8 +145,25 @@ namespace Game.Controllers
             SoundService.SoundPlayer.PlayLooping();
             SoundService.IsMuted = false;
 
+            _gameForm.ButtonNextMusic.Enabled = true;
+            _gameForm.ButtonPreviousMusic.Enabled = true;
+
             _gameForm.EnableButtonSpeaker();
             _menuForm.EnableButtonSpeaker();
+        }
+
+        private void ButtonNextMusic_Click(object? sender, EventArgs e)
+        {
+            SoundService.SoundPlayer.Stop();
+            SoundService.SetNextMusic();
+            SoundService.SoundPlayer.PlayLooping();
+        }
+
+        private void ButtonPreviousMusic_Click(object? sender, EventArgs e)
+        {
+            SoundService.SoundPlayer.Stop();
+            SoundService.SetPreviousMusic();
+            SoundService.SoundPlayer.PlayLooping();
         }
 
         private void BackButton_Click(object? sender, EventArgs e)
@@ -168,7 +190,7 @@ namespace Game.Controllers
 
             if (!SoundService.IsMuted)
             {
-                SoundService.SoundPlayer.Play();
+                SoundService.SoundPlayer.PlayLooping();
             }
         }
 
@@ -190,9 +212,12 @@ namespace Game.Controllers
             _gameForm.ButtonBack.Enabled = false;
             _gameForm.ButtonResetGame.Enabled = false;
 
-            SoundService.SoundPlayer.Stop();
-            SoundService.ChangeMusic();
-            SoundService.SoundPlayer.Play();
+            if (!SoundService.IsMuted)
+            {
+                SoundService.SoundPlayer.Stop();
+                SoundService.SetNextMusic();
+                SoundService.SoundPlayer.PlayLooping();
+            }
 
             StartGame();
         }
@@ -216,11 +241,10 @@ namespace Game.Controllers
         {
             if (_gameForm.Visible)
             {
-                SoundService.ChangeMusic();
+                SoundService.SetDefaultMusic();
 
                 if (!SoundService.IsMuted)
-                {
-                    SoundService.SoundPlayer.Stop();                
+                {             
                     SoundService.SoundPlayer.Play();
                 }
 
