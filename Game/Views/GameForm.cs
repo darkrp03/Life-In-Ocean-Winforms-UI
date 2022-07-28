@@ -59,15 +59,14 @@ namespace Game.Views
         {
             get => buttonStop;
         }
-
-        public EventHandler ButtonSpeakerOn_Click
+        public Button ButtonNextMusic
         {
-            set => buttonSpeakerOn.Click += value;
+            get => buttonNextMusic;
         }
 
-        public EventHandler ButtonSpeakerOff_Click
+        public Button ButtonPreviousMusic
         {
-            set => buttonSpeakerOff.Click += value;
+            get => buttonPreviousMusic;
         }
 
         public Button ButtonBack
@@ -79,6 +78,16 @@ namespace Game.Views
         {
             get => buttonResetGame;
         }
+
+        public EventHandler ButtonSpeakerOn_Click
+        {
+            set => buttonSpeakerOn.Click += value;
+        }
+
+        public EventHandler ButtonSpeakerOff_Click
+        {
+            set => buttonSpeakerOff.Click += value;
+        }      
         #endregion
 
         #region Methods      

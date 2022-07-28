@@ -20,14 +20,29 @@ namespace Game
             get => _soundPlayer;
         }
 
-        public static void ChangeMusic()
+        public static void SetDefaultMusic()
         {
-            if (currentMusicIndex == GameSettings.gameSounds.Length)
+            _soundPlayer.SoundLocation = GameSettings.gameSoundsPath[0];
+        }
+
+        public static void SetNextMusic()
+        {
+            if (++currentMusicIndex == GameSettings.gameSoundsPath.Length)
             {
                 currentMusicIndex = 0;
             }
 
-            _soundPlayer.SoundLocation = GameSettings.gameSounds[currentMusicIndex++];
+            _soundPlayer.SoundLocation = GameSettings.gameSoundsPath[currentMusicIndex];
+        }
+
+        public static void SetPreviousMusic()
+        {
+            if (--currentMusicIndex < 0)
+            {
+                currentMusicIndex = GameSettings.gameSoundsPath.Length - 1;
+            }
+
+            _soundPlayer.SoundLocation = GameSettings.gameSoundsPath[currentMusicIndex];
         }
     }
 }

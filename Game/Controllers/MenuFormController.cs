@@ -52,6 +52,9 @@ namespace Game.Controllers
             SoundService.SoundPlayer.Stop();
             SoundService.IsMuted = true;
 
+            _gameForm.ButtonNextMusic.Enabled = false;
+            _gameForm.ButtonPreviousMusic.Enabled = false;
+
             _menuForm.DisableButtonSpeaker();
             _gameForm.DisableButtonSpeaker();
         }
@@ -60,6 +63,9 @@ namespace Game.Controllers
         {
             SoundService.SoundPlayer.PlayLooping();
             SoundService.IsMuted = false;
+
+            _gameForm.ButtonNextMusic.Enabled = true;
+            _gameForm.ButtonPreviousMusic.Enabled = true;
 
             _menuForm.EnableButtonSpeaker();
             _gameForm.EnableButtonSpeaker();

@@ -28,11 +28,12 @@ namespace OceanLogic
         public static string obstacleImagePath = projectPath + @"\Static files\Images\Obstacle.png";
         public static string menuSongPath = projectPath + @"\Static files\Sounds\Bon Jovi - Its my life.wav";
 
-        public static string[] gameSounds = new string[] 
+        public static string[] gameSoundsPath = new string[] 
         { 
           projectPath + @"\Static files\Sounds\Undertale Megalovania Song Sound Effect.wav",
           projectPath + @"\Static files\Sounds\Crush 40 - Open Your Heart.wav",
-          projectPath + @"\Static files\Sounds\Rollin-Limp Bizkit- Instrumental.wav"
+          projectPath + @"\Static files\Sounds\Rollin-Limp Bizkit- Instrumental.wav",
+          projectPath + @"\Static files\Sounds\Survivor - Eye of the Tiger.wav"
         };
     }
 }
